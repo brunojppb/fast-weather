@@ -1,3 +1,4 @@
+import { HeadersFunction } from "@remix-run/node";
 import { json } from "@remix-run/react";
 
 export async function loader() {
@@ -11,6 +12,10 @@ export async function loader() {
     },
   );
 }
+
+export const headers: HeadersFunction = ({ loaderHeaders }) => ({
+  "Cache-Control": loaderHeaders.get("Cache-Control") ?? "no-store",
+});
 
 export default function NewsPage() {
   return (

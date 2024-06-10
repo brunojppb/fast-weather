@@ -1,4 +1,4 @@
-import { LoaderFunctionArgs, json } from "@remix-run/node";
+import { HeadersFunction, LoaderFunctionArgs, json } from "@remix-run/node";
 import {
   isRouteErrorResponse,
   useLoaderData,
@@ -49,6 +49,10 @@ export async function loader({ params }: LoaderFunctionArgs) {
     },
   );
 }
+
+export const headers: HeadersFunction = ({ loaderHeaders }) => ({
+  "Cache-Control": loaderHeaders.get("Cache-Control") ?? "no-store",
+});
 
 export default function CityPage() {
   const { city, weather } = useLoaderData<typeof loader>();
