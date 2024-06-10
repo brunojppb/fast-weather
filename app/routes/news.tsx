@@ -6,7 +6,7 @@ export async function loader() {
     {},
     {
       headers: {
-        "Cache-Control": "public, max-age=600",
+        "Cache-Control": "no-store",
       },
     },
   );
