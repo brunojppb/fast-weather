@@ -26,7 +26,12 @@ export async function loader({ params }: LoaderFunctionArgs) {
       },
       {
         headers: {
-          "Cache-Control": "s-maxage=60 stale-while-revalidate=600",
+          "Cache-Control":
+            // Cache on the user browser for 1 second
+            // Cache on the CDN for 5 minutes
+            // CDN Serve stale responses for 10 minutes after the 5 minutes expire
+            // but go grab a new version of the page on our origin
+            "max-age=1, s-maxage=300, stale-while-revalidate=600",
         },
       },
     );
