@@ -1,6 +1,6 @@
 # If you are building it for ARM arch
 # FROM arm64v8/node:20-slim as builder
-FROM node:20 as builder
+FROM node:20-slim as builder
 
 WORKDIR /app
 # By copying the package.json and lockfile first
@@ -17,7 +17,7 @@ RUN pnpm build
 
 # If you are building it for ARM arch
 # FROM arm64v8/node:20-slim as runtime
-FROM node:20 as runtime
+FROM node:20-slim as runtime
 
 WORKDIR /app
 # Make sure the app does not run as root

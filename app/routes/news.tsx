@@ -6,8 +6,7 @@ export async function loader() {
     {},
     {
       headers: {
-        "Cache-Control":
-          "max-age=1, s-maxage=1800, stale-while-revalidate=3600",
+        "Cache-Control": "public, max-age=600",
       },
     },
   );
