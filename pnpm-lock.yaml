@@ -35,6 +35,9 @@ importers:
       lucide-react:
         specifier: ^0.390.0
         version: 0.390.0(react@18.2.0)
+      openmeteo:
+        specifier: ^1.1.4
+        version: 1.1.4
       react:
         specifier: 18.2.0
         version: 18.2.0
@@ -647,6 +650,10 @@ packages:
   '@npmcli/promise-spawn@6.0.2':
     resolution: {integrity: sha512-gGq0NJkIGSwdbUt4yhdF8ZrmkGKVz9vAdVzpOfnom+V8PLSmSOVhZwbNvZZS1EYcJN5hzzKBxmmVVAInM6HQLg==}
     engines: {node: ^14.17.0 || ^16.13.0 || >=18.0.0}
+
+  '@openmeteo/sdk@1.11.6':
+    resolution: {integrity: sha512-67mF2RRwAX/mbpEs/ZS+1F7tLNSPkZLCX8yEYmObJAaGkUPCZYyAIe2HqCZR8M2t3NnxSlAGFga5gd1FHyWmBA==}
+    engines: {node: '>=12.0'}
 
   '@pkgjs/parseargs@0.11.0':
     resolution: {integrity: sha512-+1VkjdD0QBLPodGrJUeqarH8VAIvQODIbwh9XpP5Syisf7YoQgsJKPNFoqqLQlu+VQ/tVSshMR6loPMn8U+dPg==}
@@ -1931,6 +1938,9 @@ packages:
     resolution: {integrity: sha512-CYcENa+FtcUKLmhhqyctpclsq7QF38pKjZHsGNiSQF5r4FtoKDWabFDl3hzaEQMvT1LHEysw5twgLvpYYb4vbw==}
     engines: {node: ^10.12.0 || >=12.0.0}
 
+  flatbuffers@24.3.25:
+    resolution: {integrity: sha512-3HDgPbgiwWMI9zVB7VYBHaMrbOO7Gm0v+yD2FV/sCKj+9NDeVL7BOBYUuhWAQGKWOzBo8S9WdMvV0eixO233XQ==}
+
   flatted@3.3.1:
     resolution: {integrity: sha512-X8cqMLLie7KsNUDSdzeN8FYK9rEt4Dt67OsG/DNGnYTSDBG4uFAJFBnUeiV+zCVAvwFy56IjM9sH51jVaEhNxw==}
 
@@ -2832,6 +2842,10 @@ packages:
   onetime@5.1.2:
     resolution: {integrity: sha512-kbpaSSGJTWdAY5KPVeMOKXSrPtr8C8C7wodJbcsd51jRnmD+GZu8Y0VoU6Dm5Z4vWr0Ig/1NKuWRKf7j5aaYSg==}
     engines: {node: '>=6'}
+
+  openmeteo@1.1.4:
+    resolution: {integrity: sha512-TalTDl0M7JJoeRTf+rWiFZ9SLvoxm7KkFLOQqcSjCiYs+bVMhax1qtryJqeZ1RF4W4Xfsgcl9x+VC1z39ULCxA==}
+    engines: {node: '>=12.0'}
 
   optionator@0.9.4:
     resolution: {integrity: sha512-6IpQ7mKUxRcZNLIObR0hz7lxsapSSIYNZJwXPGeF0mTVqGKFIXj1DQcMoT22S3ROcLyY/rz0PWaWZ9ayWmad9g==}
@@ -4374,6 +4388,10 @@ snapshots:
   '@npmcli/promise-spawn@6.0.2':
     dependencies:
       which: 3.0.1
+
+  '@openmeteo/sdk@1.11.6':
+    dependencies:
+      flatbuffers: 24.3.25
 
   '@pkgjs/parseargs@0.11.0':
     optional: true
@@ -5991,6 +6009,8 @@ snapshots:
       keyv: 4.5.4
       rimraf: 3.0.2
 
+  flatbuffers@24.3.25: {}
+
   flatted@3.3.1: {}
 
   for-each@0.3.3:
@@ -7035,6 +7055,11 @@ snapshots:
   onetime@5.1.2:
     dependencies:
       mimic-fn: 2.1.0
+
+  openmeteo@1.1.4:
+    dependencies:
+      '@openmeteo/sdk': 1.11.6
+      flatbuffers: 24.3.25
 
   optionator@0.9.4:
     dependencies:

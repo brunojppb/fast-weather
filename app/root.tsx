@@ -93,19 +93,34 @@ function HeaderNav() {
   const { theme, changeTheme } = useTheme();
 
   return (
-    <header className="flex justify-between border-b border-indigo-500 py-4">
+    <header className="flex items-center justify-between border-b border-indigo-500 py-4">
       <Link to="/" className="font-bold">
         <span>⚡ Fast Weather</span>
       </Link>
-      <Select onValueChange={(newTheme) => changeTheme(newTheme)} value={theme}>
-        <SelectTrigger className="w-[130px]">
-          <SelectValue placeholder="Theme" />
-        </SelectTrigger>
-        <SelectContent>
-          <SelectItem value="light">Light</SelectItem>
-          <SelectItem value="dark">Dark</SelectItem>
-        </SelectContent>
-      </Select>
+      <div className="flex gap-10">
+        <ul className="flex items-center justify-center gap-2">
+          <li>
+            <Link
+              to="/news"
+              className="underline hover:text-slate-500 dark:hover:text-slate-400"
+            >
+              News
+            </Link>
+          </li>
+        </ul>
+        <Select
+          onValueChange={(newTheme) => changeTheme(newTheme)}
+          value={theme}
+        >
+          <SelectTrigger className="w-[130px]">
+            <SelectValue placeholder="Theme" />
+          </SelectTrigger>
+          <SelectContent>
+            <SelectItem value="light">Light</SelectItem>
+            <SelectItem value="dark">Dark</SelectItem>
+          </SelectContent>
+        </Select>
+      </div>
     </header>
   );
 }
