@@ -75,7 +75,7 @@ export default function CityPage() {
   return (
     <div>
       <h1 className="text text-4xl">{city.name}</h1>
-      <p className="pt-4">{city.desc}</p>
+      <p className="pt-4">Weather forecast for the next 3 days</p>
       <p>Last rendered on server: {currentDate}</p>
       <Table>
         <TableCaption>{city.name} Forecast</TableCaption>
