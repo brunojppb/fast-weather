@@ -19,10 +19,14 @@ export async function loader({ params }: LoaderFunctionArgs) {
   const city = cities[params.city ?? ""];
   if (city) {
     const weather = await getWeather(city);
+    const currentDate = new Intl.DateTimeFormat("en-DE", dateOptions).format(
+      Date.now(),
+    );
     return json(
       {
         city,
         weather,
+        currentDate,
       },
       {
         headers: {
@@ -50,18 +54,29 @@ export async function loader({ params }: LoaderFunctionArgs) {
   );
 }
 
+const dateOptions = {
+  year: "numeric",
+  month: "numeric",
+  day: "numeric",
+  hour: "numeric",
+  minute: "numeric",
+  second: "numeric",
+  hour12: false,
+  timeZone: "Europe/Berlin",
+};
+
 export const headers: HeadersFunction = ({ loaderHeaders }) => ({
   "Cache-Control": loaderHeaders.get("Cache-Control") ?? "no-store",
 });
 
 export default function CityPage() {
-  const { city, weather } = useLoaderData<typeof loader>();
+  const { city, weather, currentDate } = useLoaderData<typeof loader>();
 
   return (
     <div>
       <h1 className="text text-4xl">{city.name}</h1>
       <p className="pt-4">{city.desc}</p>
-
+      <p>Last rendered on server: {currentDate}</p>
       <Table>
         <TableCaption>{city.name} Forecast</TableCaption>
         <TableHeader>
@@ -74,8 +89,14 @@ export default function CityPage() {
           {weather.map((w) => {
             return (
               <TableRow key={w.time}>
-                <TableCell className="font-medium">{w.time}</TableCell>
-                <TableCell className="text-right">{w.temperature}</TableCell>
+                <TableCell className="font-medium">
+                  {new Intl.DateTimeFormat("en-DE", dateOptions).format(
+                    Date.parse(w.time),
+                  )}
+                </TableCell>
+                <TableCell className="text-right">
+                  {w.temperature.toFixed(2)} C
+                </TableCell>
               </TableRow>
             );
           })}
